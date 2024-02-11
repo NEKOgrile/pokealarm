@@ -40,9 +40,7 @@ data = json.loads(open(locales_file, "rb+").read())
 master_file = "https://raw.githubusercontent.com/WatWowMap/Masterfile-Generator/master/master-latest-everything.json"
 master_file = requests.get(master_file)
 pokemon_data = master_file.json()["pokemon"]
-# Invasion data
-invasions_file = "https://raw.githubusercontent.com/cecpk/RocketMAD/master/static/data/invasions.json"
-invasions_data = requests.get(invasions_file).json()
+invasions_data = master_file.json()["invasions"]
 
 teams_formatted = re.sub(
     r'[{}",]', "", json.dumps(data["teams"], indent=2, sort_keys=True)
